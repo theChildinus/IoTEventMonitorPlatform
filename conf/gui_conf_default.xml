@@ -1,0 +1,12 @@
+<xml projectName="IoTEventMonitorPlatform">
+    <events currentEventName="事件1">
+        <event name="事件1">
+            <head>&lt;xml name="event1"&gt;</head>
+            <body>&lt;name&gt;value&lt;/name&gt;</body>
+            <tail>&lt;/xml&gt;</tail>
+        </event>
+    </events>
+    <run currentEventName="事件1" vmIP="10.108.166.205" externalIP="10.205.41.40" pseudoTerminal="psty1" serialPort="pty1"
+         stateMachineFilePath="/home/chenkuan/状态机1.xml">
+    </run>
+</xml>

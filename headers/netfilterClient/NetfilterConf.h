@@ -1,0 +1,11 @@
+//
+// Created by chenkuan on 2018/3/4.
+//
+
+#ifndef IOTEVENTMONITORPLATFORM_NETFILTERCONF_H
+#define IOTEVENTMONITORPLATFORM_NETFILTERCONF_H
+
+#define NETFILTER_SRC_PATH "/home/kong/CLionProjects/netfilter/src"
+#define NETFILTER_CONF_FILENAME "conf.h"
+
+#endif //IOTEVENTMONITORPLATFORM_NETFILTERCONF_H
