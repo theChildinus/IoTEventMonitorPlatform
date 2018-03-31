@@ -315,11 +315,11 @@ void EventManager::run() {
                         logger->debug("该事件为非关键事件");
                         if (result == pass || result == undetermined) {
                             logger->info("网络事件 \"%s\" 验证通过", eventXML);
-                            serialPortRepeater->passEvent();
+                            netfilterClient->passEvent();
                         }
                         else if (result == refuse) {
                             logger->info("网络事件 \"%s\"验证拦截", eventXML);
-                            serialPortRepeater->interceptEvent();
+                            netfilterClient->interceptEvent();
                         }
                     }
                 }
