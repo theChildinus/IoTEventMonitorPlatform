@@ -1,23 +1,25 @@
 # IoTEventMonitorPlatform
 物联网事件监控平台系统
-
+>*by chenkuan*
 # conf
     - gui_conf.xml 页面配置
     - gui_conf_default.xml 默认页面配置
 # output
 仅在构建后生成，包含输出的可执行文件
 # src
-    - GUI 图形界面部分，使用QT5编写
-    - manager 后台线程，收集事件、验证事件
-    - netfilterClient 使用netlink与内核netfilter作事件交互
-    - serialPortClient 串口中继器，从串口获取事件
-    - tinyxml2 开源的xml解析工具
-    - verification 事件验证模块
-        - rvsDFAInterface 状态机抽象接口
-        - rvsDFA 具体的状态机
+- GUI 图形界面部分，使用QT5编写
+- manager 后台线程，收集事件、验证事件
+- netfilterClient 使用netlink与内核netfilter作事件交互
+- serialPortClient 串口中继器，从串口获取事件
+- tinyxml2 开源的xml解析工具
+- verification 事件验证模块
+    - rvsDFAInterface 状态机抽象接口
+    - rvsDFA 具体的状态机
 
 
 # IOT系统整体结构
+>*by kong*
+
 ![image](IOT系统.png)
 # 环境搭建
 
@@ -55,18 +57,28 @@
     - 编译IoTEventMonitorPlatform时 header - NetfilterConf - 中的路径需要改为 netfilter工程的路径
 
 8. **IoTEventMonitorPlatform** 需要权限运行 可以选择
-    - sudo运行 CLion sudo sh clion.sh
+    - sudo运行CLion `sudo sh clion.sh`
     - sudo 运行 IoTEventMonitorPlatform
 9. **内核模块相关命令**
     - insmod 模块名.ko ---- 安装模块
     - dmesg  ------------- 查看安装的内核模块
     - rmmod 模块名 -------- 删除模块
 10. **安装KVM**
-    - http://blog.leanote.com/post/alphajx/9358f12428ff
+    - 输入命令 `egrep -c ‘(svm|vmx)’ /proc/cpuinfo` 以确定CPU是否支持硬件虚拟化，返回值大于0代表支持
+    - 支持的情况下，进入BIOS系统开启CPU虚拟化
+    - `sudo apt-get install qemu-kvm libvirt-bin bridge-utils virt-manager virtinst virt-viewer`
 11. **在KVM中安装虚拟机**
     - 使用镜像ubuntu.img
+    - ubuntu.img扩容
+        - ubuntu.img默认大小为8G，后续使用会出现容量不足的情况，需要扩容
+        - 扩容步骤：
+            1. 宿主机端 `qemu-img resize ubuntu.img +5G`
+            2. 启动虚拟机，虚拟机端输入命令 `sudo apt-get autoremove`清除出空间安装 gparted分区工具
+            3. `sudo apt-get install gparted`
+            4. 启动 `sudo gparted`
+            5. 在gparted分工具中可以看到有5G空间是unallocated未分配的，参考这篇文章 [Expanding a linux disk with gparted](https://blog.mwpreston.net/2012/06/22/expanding-a-linux-disk-with-gparted-and-getting-swap-out-of-the-way/) 使未分配分区移动到swap分区之前并合并到dev1中
 12. **设置虚拟机为桥接模式**
-    - http://blog.csdn.net/chenhaifeng2016/article/details/78162759
+    - [参考文档](http://blog.csdn.net/chenhaifeng2016/article/details/78162759)
 13. **给虚拟机添加串口**
     - 显示硬件详情 - 添加硬件 - Serial - Device - Psuedo TTY(pty)
 14. **串口环境配置**
@@ -84,9 +96,9 @@
     - 拷贝java memory中的jdk文件夹 确保jdk为1.7
 	可能添加源的方式行不通，使用解压方式
 2. 从宿主机中传送过来的文件夹EventSimulation4Java中，进入到EventSimulation4Java.jar所在目录
-    - 执行命令 sudo java -Djava.library.path=../../../lib/mfz-rxtx-2.2-20081207-linux-x86_64/ -jar -Xint EventSimulation4Java.jar
+    - 执行命令 `sudo java -Djava.library.path=../../../lib/mfz-rxtx-2.2-20081207-linux-x86_64/ -jar -Xint EventSimulation4Java.jar`
 
-    - sudo ./java -Djava.library.path=/home/kong/IdeaProjects/EventSimulation4Java/lib/mfz-rxtx-2.2-20081207-linux-x86_64 -jar -Xint /home/kong/IdeaProjects/EventSimulation4Java/out/artifacts/EventSimulation4Java_jar/EventSimulation4Java.jar
+    - `sudo ./java -Djava.library.path=/home/kong/IdeaProjects/EventSimulation4Java/lib/mfz-rxtx-2.2-20081207-linux-x86_64 -jar -Xint /home/kong/IdeaProjects/EventSimulation4Java/out/artifacts/EventSimulation4Java_jar/EventSimulation4Java.jar`
 
 3. 运行EventSimulation程序
     - 如果错误提示 “没有清单主属性” 说明jar包打包有问题
