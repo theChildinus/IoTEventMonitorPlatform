@@ -98,9 +98,11 @@ bool StateMachineParser::parseVarDecl(const char *varDecl) {
     varDeclRawStr.replace("&lt;", "<");
     varDeclRawStr.replace("&gt;", ">");
     varDeclRawStr.replace("</div>", "<div>");
+    varDeclRawStr.replace("</pre>", "<pre>");
+    varDeclRawStr.replace("<pre>", "");
     varDeclRawStr.replace("<br>", "<div>");
-
     auto varDeclStrList = varDeclRawStr.split("<div>").toStdList();
+
     if (varDeclStrList.empty()) {
         return false;
     }
@@ -179,6 +181,7 @@ bool StateMachineParser::parseTran(const char *tran, const char *source, const c
         logger->error("找不到转移 \"%s\" 的目的节点 %s", tran, target);
         return false;
     }
+
     int targetId = idMap[stoi(string(target))];
 
     if (source == nullptr) {
