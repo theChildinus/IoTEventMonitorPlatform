@@ -20,6 +20,7 @@ if (WIN32)
     include_directories(D:\\Users\\chenkuan\\ClionProjects\\runtime-verification-system\\headers\\DFA)
     include_directories(D:\\software\\compilerandalgorithm\\z3\\z3-4.6.0-x86-win\\include)
 elseif(UNIX)
+
     set(Qt5Widgets_DIR /home/kong/Qt/5.11.1/gcc_64/lib/cmake/Qt5Widgets)
 
     link_directories(/home/kong/CLionProjects/tinylog/lib)

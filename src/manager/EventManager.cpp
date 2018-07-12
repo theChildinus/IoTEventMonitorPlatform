@@ -189,7 +189,9 @@ void EventManager::run() {
                     auto result = model->verifyEvent(event).resultEnum;
                     if (event->isImportant()) {
                         logger->debug("该事件为关键事件");
+
                         emit showLogMessage("该事件为关键事件");
+
                         if (result == pass) {
                             logger->info("串口事件 \"%s\" 验证通过", eventXML);
                             emit showLogMessage("验证事件后通过此事件");
@@ -215,6 +217,7 @@ void EventManager::run() {
                         if (result == pass || result == undetermined) {
                             logger->info("串口事件 \"%s\" 验证通过", eventXML);
                             emit showLogMessage("验证事件后通过该事件");
+
                             serialPortRepeater->passEvent();
                         }
                         else if (result == refuse) {

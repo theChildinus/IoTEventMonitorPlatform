@@ -22,5 +22,9 @@
             <tail>&lt;/xml&gt;</tail>
         </event>
     </events>
+<<<<<<< HEAD
     <run currentEventName="事件1" vmIP="10.108.165.148" externalIP="10.108.165.205" pseudoTerminal="/dev/pts/19" serialPort="/dev/ttyS0" stateMachineFilePath="/home/kong/Downloads/varCommand2.xml"/>
+=======
+    <run currentEventName="事件1" vmIP="10.108.167.196" externalIP="10.108.164.222" pseudoTerminal="/dev/pts/18" serialPort="/dev/ttys0" stateMachineFilePath="/home/kong/CLionProjects/runtime-verification-system/examples/simple-model.xml"/>
+>>>>>>> 94f90bec6bc978b6695a008e856fbc634e60e81f
 </xml>
