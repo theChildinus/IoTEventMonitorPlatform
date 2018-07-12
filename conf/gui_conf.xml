@@ -1,0 +1,26 @@
+<xml projectName="IoTEventMonitorPlatform">
+    <events currentEventName="事件1">
+        <event name="事件1">
+            <head>&lt;xml type="event"</head>
+            <body>&lt;varName1&gt;value1&lt;/varName1&gt;
+&lt;varName2&gt;value2&lt;/varName2&gt;</body>
+            <tail>&lt;/xml&gt;</tail>
+        </event>
+        <event name="事件2">
+            <head>&lt;xml&gt;</head>
+            <body>&lt;name&gt;value&lt;/name&gt;</body>
+            <tail>&lt;/xml&gt;</tail>
+        </event>
+        <event name="事件3">
+            <head>&lt;xml&gt;</head>
+            <body>&lt;name&gt;value&lt;/name&gt;</body>
+            <tail>&lt;/xml&gt;</tail>
+        </event>
+        <event name="事件4">
+            <head>&lt;xml&gt;</head>
+            <body>&lt;name&gt;value&lt;/name&gt;</body>
+            <tail>&lt;/xml&gt;</tail>
+        </event>
+    </events>
+    <run currentEventName="事件1" vmIP="10.108.165.148" externalIP="10.108.165.205" pseudoTerminal="/dev/pts/19" serialPort="/dev/ttyS0" stateMachineFilePath="/home/kong/Downloads/varCommand2.xml"/>
+</xml>
